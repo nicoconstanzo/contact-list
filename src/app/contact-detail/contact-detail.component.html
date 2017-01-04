@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-8 offset-sm-2 col-lg-6 offset-lg-3">
+    <div class="card">
+      <div class="card-block" *ngIf="contact">
+        <h2 *ngIf="contact.firstName || contact.lastName">{{ contact.firstName }} {{ contact.lastName }}</h2>
+        <h2 *ngIf="!contact.firstName && !contact.lastName">{{ contact.email }}</h2>
+        <dl class="row mb-0">
+          <dt class="col-xs-12 col-md-5">First Name</dt>
+          <dd class="col-xs-12 col-md-7">{{ contact.firstName }}</dd>
+          <dt class="col-xs-12 col-md-5">Last Name</dt>
+          <dd class="col-xs-12 col-md-7">{{ contact.lastName }}</dd>
+          <dt class="col-xs-12 col-md-5">Address</dt>
+          <dd class="col-xs-12 col-md-7">{{ contact.address }}</dd>
+          <dt class="col-xs-12 col-md-5">Phone</dt>
+          <dd class="col-xs-12 col-md-7">{{ contact.phone }}</dd>
+        </dl>
+      </div>
+      <div class="card-footer">
+        <div class="clearfix" *ngIf="!confirmDelete">
+          <div class="float-xs-left">
+            <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+          </div>
+          <div class="float-xs-right" *ngIf="contact">
+            <button type="button" class="btn btn-outline-danger" (click)="confirmDelete = true">Delete</button>
+          </div>
+        </div>
+        <div *ngIf="confirmDelete">
+          <div class="card card-block mt-1">
+            <p class="lead">Confirm delete?</p>
+            <div class="text-xs-right">
+              <button type="button" class="btn btn-secondary" (click)="confirmDelete = false">Cancel</button>
+              <button type="button" class="btn btn-danger" (click)="delete(contact)">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

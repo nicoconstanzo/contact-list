@@ -1,0 +1,38 @@
+<!-- Non mobile view. When a contact is selected, a "mini preview" shows with a button to view the full profile. -->
+<div class="row hidden-xs-down">
+  <!-- Shows the list of contacts -->
+  <section class="col-sm-7">
+    <ul class="list-group mb-2">
+      <li class="list-group-item list-group-item-action" *ngFor="let contact of contacts" (click)="onSelect(contact)" [class.active]="contact == selectedContact">
+        <h5 class="list-group-item-heading" *ngIf="contact.firstName || contact.lastName">{{ contact.firstName }} {{ contact.lastName }}</h5>
+        <p class="list-group-item-text">{{ contact.email }}</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Shows a small preview of the contact -->
+  <aside class="col-sm-5" *ngIf="selectedContact">
+    <div class="card">
+      <div class="card-block">
+        <h3 *ngIf="!selectedContact.firstName && !selectedContact.lastName" class="text-truncate">{{ selectedContact.email }}</h3>
+        <h3 *ngIf="selectedContact.firstName || selectedContact.lastName" class="mb-0">{{ selectedContact.firstName }} {{ selectedContact.lastName }}</h3>
+        <p class="mb-0">{{ selectedContact.phone }}</p>
+      </div>
+      <div class="card-block">
+        <button type="button" class="btn btn-outline-primary" (click)="goToDetail()">View contact</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- Mobile version, on click takes you to Contact details directly -->
+<div class="row hidden-sm-up">
+  <div class="col-xs-12">
+    <div class="list-group mb-2">
+      <a class="list-group-item list-group-item-action" *ngFor="let contact of contacts" [routerLink]="['/detail', contact.id]" [class.active]="contact == selectedContact">
+        <h5 class="list-group-item-heading">{{ contact.email }}</h5>
+        <p class="list-group-item-text">{{ contact.firstName }} {{ contact.lastName}}</p>
+      </a>
+    </div>
+  </div>
+</div>

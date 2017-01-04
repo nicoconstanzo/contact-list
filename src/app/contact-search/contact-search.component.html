@@ -1,0 +1,10 @@
+<div id="search-component" class="search-box-container">
+  <input class="form-control" placeholder="Search by Email" #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <div class="list-group search-box-results">
+    <!-- The async pipe subscribes to the Observable and produces the array of contacts. -->
+    <a class="list-group-item list-group-item-action" *ngFor="let contact of contacts | async" (click)="goToDetail(contact)">
+      <p class="mb-0">{{ contact.firstName }} {{ contact.lastName }}</p>
+      <p class="text-muted mb-0">{{ contact.email }}</p>
+    </a>
+  </div>
+</div>
