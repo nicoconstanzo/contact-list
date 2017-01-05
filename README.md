@@ -1,6 +1,6 @@
-## angular2-seed
+## Contact List
 
-A simple starter project demonstrating the basic concepts of Angular 2.
+A simple contact list demo based on Angular 2 and Webpack.
 
 
 ### Usage

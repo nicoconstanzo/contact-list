@@ -1,10 +1,13 @@
-<div class="row">
+<div class="row" *ngIf="contact">
   <div class="col-xs-12 col-sm-8 offset-sm-2 col-lg-6 offset-lg-3">
     <div class="card">
-      <div class="card-block" *ngIf="contact">
+      <!-- Contact information -->
+      <div class="card-block">
         <h2 *ngIf="contact.firstName || contact.lastName">{{ contact.firstName }} {{ contact.lastName }}</h2>
         <h2 *ngIf="!contact.firstName && !contact.lastName">{{ contact.email }}</h2>
         <dl class="row mb-0">
+          <dt class="col-xs-12 col-md-5">Email</dt>
+          <dd class="col-xs-12 col-md-7">{{ contact.email }}</dd>
           <dt class="col-xs-12 col-md-5">First Name</dt>
           <dd class="col-xs-12 col-md-7">{{ contact.firstName }}</dd>
           <dt class="col-xs-12 col-md-5">Last Name</dt>
@@ -20,13 +23,16 @@
           <div class="float-xs-left">
             <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
           </div>
-          <div class="float-xs-right" *ngIf="contact">
+          <!-- Actions on contact -->
+          <div class="float-xs-right">
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/edit', contact.id]">Edit</button>
             <button type="button" class="btn btn-outline-danger" (click)="confirmDelete = true">Delete</button>
           </div>
         </div>
+        <!-- Delete contact confirmation -->
         <div *ngIf="confirmDelete">
           <div class="card card-block mt-1">
-            <p class="lead">Confirm delete?</p>
+            <p class="lead">Delete contact?</p>
             <div class="text-xs-right">
               <button type="button" class="btn btn-secondary" (click)="confirmDelete = false">Cancel</button>
               <button type="button" class="btn btn-danger" (click)="delete(contact)">OK</button>

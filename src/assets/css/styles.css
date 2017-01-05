@@ -1,0 +1,22 @@
+/* Mostly Bootstrap overrides to give a more unique look to the app */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, .h1 {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.list-group-item-action {
+  color: #999;
+}
+
+.btn-primary {
+  background-color: black;
+  border-color: black;
+}
+
+.form-control {
+  border-width: 2px;
+}

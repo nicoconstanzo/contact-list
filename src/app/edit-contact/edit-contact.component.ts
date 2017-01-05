@@ -7,13 +7,11 @@ import { ContactService }             from '../services/contact.service';
 import { Contact }                    from '../contact';
 
 @Component({
-  selector: 'contact-detail',
-  templateUrl: './contact-detail.component.html'
+  selector: 'edit-contact',
+  templateUrl: './edit-contact.component.html'
 })
-export class ContactDetailComponent implements OnInit {
+export class EditContactComponent implements OnInit {
   contact: Contact;
-
-  confirmDelete: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private location: Location,
@@ -27,10 +25,9 @@ export class ContactDetailComponent implements OnInit {
       .subscribe(contact => this.contact = contact);
   }
 
-  // Delete the contact from the database
-  delete(contact: Contact): void {
-    this.contactService.delete(contact.id)
-    this.goBack();
+  // Update the contact
+  update(contact: Contact): void {
+    this.contactService.update(contact);
   }
 
   // Go to previous page

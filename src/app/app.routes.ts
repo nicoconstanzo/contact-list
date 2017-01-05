@@ -5,6 +5,7 @@ import { HomeComponent }            from './home/home.component';
 import { AddContactComponent }      from './add-contact/add-contact.component';
 import { ContactsComponent }        from './contacts/contacts.component';
 import { ContactDetailComponent }   from './contact-detail/contact-detail.component';
+import { EditContactComponent }     from './edit-contact/edit-contact.component';
 
 // Shows all the routing for the app and the components that are loaded according to the navigation path.
 export const rootRouterConfig: Routes = [
@@ -30,8 +31,17 @@ export const rootRouterConfig: Routes = [
     component : ContactDetailComponent
   },
   {
+    path      : 'edit/:id',
+    component : EditContactComponent
+  },
+  {
     path      : 'about',
     component : AboutComponent
   },
+  {
+    // If no route matches, redirect
+    path: '**',
+    redirectTo: '/home'
+  }
 ];
 
