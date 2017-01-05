@@ -22,6 +22,4 @@ export class AddContactComponent{
         this.submitted = true
       });
   }
-
-
 }

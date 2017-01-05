@@ -10,8 +10,9 @@ export class ContactSearchService {
 
   // Sends search queries to our Web API.
   search(term: string): Observable<Contact[]> {
+    // TODO: make search work with lastname and email
     return this.http
-      .get(`app/contacts/?firstname=${term}`)
+      .get(`app/contacts/?firstName=${term}`)
       .map((r: Response) => r.json().data as Contact[]);
   }
 
