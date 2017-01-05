@@ -9,7 +9,7 @@
         <form #editContactForm="ngForm" (ngSubmit)="update(contact); editContactForm.reset()">
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="contact.email" #email="ngModel" autofocus="true" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/">
+            <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="contact.email" #email="ngModel" autofocus="true">
             <p class="text-danger" [hidden]="email.valid || email.pristine">This field is required.</p>
           </div>
 

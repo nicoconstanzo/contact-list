@@ -1,6 +1,6 @@
-import { Component, Input, OnInit }   from '@angular/core';
-import { ActivatedRoute, Params }     from '@angular/router';
-import { Location }                   from '@angular/common';
+import { Component, Input, OnInit }         from '@angular/core';
+import { ActivatedRoute, Params, Router }   from '@angular/router';
+import { Location }                         from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 import { ContactService }             from '../services/contact.service';
@@ -15,7 +15,8 @@ export class EditContactComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private location: Location,
-    private contactService: ContactService)
+    private contactService: ContactService,
+    private router: Router)
   { }
 
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class EditContactComponent implements OnInit {
   // Update the contact
   update(contact: Contact): void {
     this.contactService.update(contact);
+    this.router.navigate(['/detail', this.contact.id])
   }
 
   // Go to previous page
